@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 9;
+    public float moveSpeed = 7.5f;
     public float jumpHeight = 4;
     private float horizontalMovement;
     private bool gameOver = false;
@@ -27,13 +27,7 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(moveSpeed * Time.deltaTime * horizontalMovement, 0, 0);
 
-
-        if(horizontalMovement < 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-
-        if(transform.position.y < -40.2f)
+        if(transform.position.y < -40.5f)
         {
             gameOver = true;
         }
@@ -45,7 +39,6 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
     private void FixedUpdate()
     {
         if (isJumpPressed)
