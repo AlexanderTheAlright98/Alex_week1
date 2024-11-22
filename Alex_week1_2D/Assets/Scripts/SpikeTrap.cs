@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpikeTrap : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class SpikeTrap : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
           Destroy(collision.gameObject);
+          Debug.Log("Your Quest is Over!!");
+          SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

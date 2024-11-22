@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 9f;
-    public float horizontalMovement;
-    public bool gameOverBoy = false;
+    private float horizontalMovement;
+    private bool gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,15 +26,16 @@ public class PlayerController : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        if(transform.position.y < -20)
+        if(transform.position.y < -29.5f)
         {
-            gameOverBoy = true;
+            gameOver = true;
         }
         
-        if(gameOverBoy)
+        if(gameOver)
         {
             Destroy(gameObject);
-            Debug.Log("GAME OVER BABY!");
+            Debug.Log("Your Quest is Over!!");            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
